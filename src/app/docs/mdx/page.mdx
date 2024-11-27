@@ -1,0 +1,56 @@
+import { Code } from "@/ui/code"
+
+# Next.js MDX
+
+MDX is a compatibility layer provided by Next.js and other packages to transform MDX content into HTML syntax.
+This reduces the time required to create long content, allowing users to focus solely on writing text. MDX, a
+lightweight markup language, is particularly useful for blogs as it enables users to create text without worrying
+about structural content or components.
+
+## Installation
+
+<Code
+    lang="bash"
+    code={`
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+# or
+pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+`}
+/>
+
+## Configuration
+
+To ensure compatibility with MDX, follow these steps to enable the necessary extensions:
+
+### Setup `next.config.ts` file
+
+<Code
+  lang="ts"
+  code={`
+  import type { NextConfig } from "next"
+  import createMDX from "@next/mdx"
+
+  const nextConfig: NextConfig = {
+    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  } 
+
+  const withMDX = createMDX({
+    options: {},
+  })
+
+  export default withMDX(nextConfig)
+  `}
+/>
+
+### Add `mdx-components.tsx` file
+
+<Code 
+  lang="ts"
+  code={`
+  import type { MDXComponents } from "mdx/types"
+
+  export function useMDXComponents(components: MDXComponents): MDXComponents {
+    return { ...components }
+  }
+  `}
+/>

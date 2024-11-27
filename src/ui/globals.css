@@ -3,19 +3,45 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #0a0a0a;
+    --shiki-foreground: #eeeeee;
+    --shiki-background: #0a0a0a;
+    --shiki-token-constant: hsl(210, 100%, 66%);
+    --shiki-token-string: hsl(0, 0%, 93%);
+    --shiki-token-comment: hsl(0, 0%, 63%);
+    --shiki-token-keyword: hsl(341, 90%, 67%);
+    --shiki-token-parameter: hsl(39, 90%, 50%);
+    --shiki-token-function: hsl(275, 80%, 71%);
+    --shiki-token-string-expression: hsl(131, 43%, 57%);
+    --shiki-token-punctuation: hsl(0, 0%, 93%);
+    --shiki-token-link: hsl(131, 43%, 57%);
+    --shiki-border: 0 0% 18%;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+@layer base {
+    main {
+        :is(h1, h2, h3, h4) {
+            @apply mt-6 mb-4 text-white font-bold;
+        }
+
+        h1 {
+            @apply text-4xl;
+        }
+
+        h2 {
+            @apply text-3xl;
+        }
+
+        h3 {
+            @apply text-2xl;
+        }
+
+        p {
+            @apply mt-0;
+        }
+
+        pre {
+            @apply p-4 rounded overflow-x-auto border-gray-100 scroll:h-2 track:mx-1 thumb:rounded thumb:bg-gray-100;
+        }
     }
-}
-
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
 }

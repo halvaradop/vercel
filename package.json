@@ -12,11 +12,17 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@halvaradop/ui-core": "^0.2.1",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.0.3",
+    "@types/mdx": "^2.0.13",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"
   },
   "devDependencies": {
+    "@halvaradop/tailwindcss-utilities": "^0.2.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -24,9 +30,11 @@
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
     "prettier": "^3.4.1",
+    "shiki": "^1.23.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
+  "packageManager": "pnpm@9.12.0",
   "prettier": {
     "printWidth": 130,
     "tabWidth": 4,
