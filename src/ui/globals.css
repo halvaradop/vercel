@@ -11,7 +11,7 @@
     --shiki-token-comment: hsl(0, 0%, 63%);
     --shiki-token-keyword: hsl(341, 90%, 67%);
     --shiki-token-parameter: hsl(39, 90%, 50%);
-    --shiki-token-function: hsl(341, 90%, 67%);
+    --shiki-token-function: hsl(275, 80%, 71%);
     --shiki-token-string-expression: hsl(131, 43%, 57%);
     --shiki-token-punctuation: hsl(0, 0%, 93%);
     --shiki-token-link: hsl(131, 43%, 57%);
@@ -21,19 +21,19 @@
 @layer base {
     main {
         :is(h1, h2, h3, h4) {
-            @apply mt-6 mb-4 text-white;
+            @apply mt-6 mb-4 text-white font-bold;
         }
 
         h1 {
-            @apply text-4xl font-bold;
+            @apply text-4xl;
         }
 
         h2 {
-            @apply text-3xl font-bold;
+            @apply text-3xl;
         }
 
         h3 {
-            @apply text-2xl font-bold;
+            @apply text-2xl;
         }
 
         p {
@@ -41,7 +41,7 @@
         }
 
         pre {
-            @apply p-4 overflow-x-auto border-gray-100 scroll:h-2 track:mx-1 thumb:rounded thumb:bg-gray-100;
+            @apply p-4 rounded overflow-x-auto border-gray-100 scroll:h-2 track:mx-1 thumb:rounded thumb:bg-gray-100;
         }
     }
 }
