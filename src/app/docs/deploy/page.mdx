@@ -1,0 +1,48 @@
+import { Code } from "@/ui/code"
+
+# Deploy
+
+In this document, you will learn how to deploy your JavaScript-based web application using Vercel CLI or GitHub Actions.
+
+## Using the Vercel CLI
+
+Vercel provides a CLI that helps us deploy the application using the terminal with a simple series of steps. Don't worry about the length or complexity of the files.
+
+### Install Vercel as a global dependency
+
+Use the following command to install Vercel globally using npm or pnpm package managers:
+
+<Code
+    lang="bash"
+    code={`
+npm i -g vercel@latest
+# or
+pnpm add -g vercel@latest   
+    `}
+/>
+
+### Link Your Project
+
+Link your local project with your remote projects on Vercel that exist in your account. Follow these steps to link the project:
+
+<Code
+    lang="bash"
+    code={`
+vercel link
+ ? Set up "~\path" ?
+ ? Which scope should contain your project ?
+ ? Link to existing project ?
+ ? What's your project's name ?
+  `}
+/>
+
+### Build Your Project
+
+Build your local project. Follow the next step:
+
+<Code
+    lang="bash"
+    code={`
+vercel build
+    `}
+/>
