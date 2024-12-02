@@ -1,4 +1,5 @@
 import { Code } from "@/ui/code"
+import { deploy } from "@/lib/code"
 
 # Deploy
 
@@ -12,37 +13,16 @@ Vercel provides a CLI that helps us deploy the application using the terminal wi
 
 Use the following command to install Vercel globally using npm or pnpm package managers:
 
-<Code
-    lang="bash"
-    code={`
-npm i -g vercel@latest
-# or
-pnpm add -g vercel@latest   
-    `}
-/>
+<Code lang="bash" code={deploy.installation} />
 
 ### Link Your Project
 
 Link your local project with your remote projects on Vercel that exist in your account. Follow these steps to link the project:
 
-<Code
-    lang="bash"
-    code={`
-vercel link
- ? Set up "~\path" ?
- ? Which scope should contain your project ?
- ? Link to existing project ?
- ? What's your project's name ?
-  `}
-/>
+<Code lang="bash" code={deploy.link} />
 
 ### Build Your Project
 
 Build your local project. Follow the next step:
 
-<Code
-    lang="bash"
-    code={`
-vercel build
-    `}
-/>
+<Code lang="bash" code={deploy.build} />
