@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:vercel": "rm -rf .next && vercel build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -46,7 +47,8 @@
           "*.json",
           "*.yml",
           "*.yaml",
-          "*.md"
+          "*.md",
+          "*.mdx"
         ],
         "options": {
           "tabWidth": 2

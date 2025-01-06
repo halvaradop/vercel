@@ -12,6 +12,7 @@ export default {
                     200: "#1B1B1B",
                     300: "#161616",
                 },
+                mark: "var(--shiki-token-link)",
             },
         },
     },

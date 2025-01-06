@@ -7,7 +7,7 @@
     --shiki-foreground: #eeeeee;
     --shiki-background: #0a0a0a;
     --shiki-token-constant: hsl(210, 100%, 66%);
-    --shiki-token-string: hsl(0, 0%, 93%);
+    --shiki-token-string: hsl(131, 43%, 57%);
     --shiki-token-comment: hsl(0, 0%, 63%);
     --shiki-token-keyword: hsl(341, 90%, 67%);
     --shiki-token-parameter: hsl(39, 90%, 50%);
@@ -43,5 +43,25 @@
         pre {
             @apply p-4 rounded overflow-x-auto border-gray-100 scroll:h-2 track:mx-1 thumb:rounded thumb:bg-gray-100;
         }
+
+        p + p {
+            @apply my-4;
+        }
+
+        ol {
+            @apply m-4 mr-0 list-decimal list-inside space-y-1;
+        }
+
+        ul {
+            @apply m-4 mr-0 list-disc list-inside space-y-1;
+        }
+
+        a {
+            @apply text-[#52a8ff];
+        }
+    }
+
+    .mark {
+        @apply mx-1 py-0.5 px-1 tracking-wide text-mark rounded bg-[#0a0a0a];
     }
 }

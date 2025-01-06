@@ -1,4 +1,5 @@
 import { Code } from "@/ui/code"
+import { mdx } from "@/lib/code"
 
 # Next.js MDX
 
@@ -9,14 +10,12 @@ about structural content or components.
 
 ## Installation
 
-<Code
-    lang="bash"
-    code={`
+{/* prettier-ignore */}
+<Code lang="bash">
 npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-# or
+\# or
 pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-`}
-/>
+</Code>
 
 ## Configuration
 
@@ -24,33 +23,9 @@ To ensure compatibility with MDX, follow these steps to enable the necessary ext
 
 ### Setup `next.config.ts` file
 
-<Code
-  lang="ts"
-  code={`
-  import type { NextConfig } from "next"
-  import createMDX from "@next/mdx"
-
-  const nextConfig: NextConfig = {
-    pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  } 
-
-  const withMDX = createMDX({
-    options: {},
-  })
-
-  export default withMDX(nextConfig)
-  `}
-/>
+{/* prettier-ignore */}
+<Code lang="ts" children={mdx.nextConfig} />
 
 ### Add `mdx-components.tsx` file
 
-<Code 
-  lang="ts"
-  code={`
-  import type { MDXComponents } from "mdx/types"
-
-  export function useMDXComponents(components: MDXComponents): MDXComponents {
-    return { ...components }
-  }
-  `}
-/>
+<Code lang="tsx" children={mdx.mdxComponents} />
