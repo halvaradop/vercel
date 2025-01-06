@@ -15,8 +15,11 @@ const createTheme = await createHighlighter({
 
 export const Code = async ({ children = "", lang = "ts" }: CodeProps) => {
     return Children.map(children, async (child) => {
-        // @ts-ignore
-        const convertToString = typeof child === "string" ? child.trim() : child?.props?.children?.trim()
+        const convertToString =
+            typeof child === "string"
+                ? child.trim()
+                : // @ts-expect-error the children cannot be a string
+                  child?.props?.children?.trim()
         const html = createTheme.codeToHtml(convertToString, {
             lang,
             theme: "css-variables",
