@@ -10,7 +10,12 @@ about structural content or components.
 
 ## Installation
 
-<Code lang="bash" code={mdx.installation} />
+{/* prettier-ignore */}
+<Code lang="bash">
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+\# or
+pnpm add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+</Code>
 
 ## Configuration
 
@@ -18,8 +23,9 @@ To ensure compatibility with MDX, follow these steps to enable the necessary ext
 
 ### Setup `next.config.ts` file
 
-<Code lang="ts" code={mdx.nextConfig} />
+{/* prettier-ignore */}
+<Code lang="ts" children={mdx.nextConfig} />
 
 ### Add `mdx-components.tsx` file
 
-<Code lang="tsx" code={mdx.mdxComponents} />
+<Code lang="tsx" children={mdx.mdxComponents} />

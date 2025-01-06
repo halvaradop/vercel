@@ -1,28 +1,120 @@
 import { Code } from "@/ui/code"
 import { deploy } from "@/lib/code"
+import { Mark } from "@/ui/mark"
 
 # Deploy
 
-In this document, you will learn how to deploy your JavaScript-based web application using Vercel CLI or GitHub Actions.
+In this document, you will learn how to deploy your JavaScript-based web application using the Vercel CLI or
+GitHub Actions.
 
 ## Using the Vercel CLI
 
-Vercel provides a CLI that helps us deploy the application using the terminal with a simple series of steps. Don't worry about the length or complexity of the files.
+Vercel provides a CLI that helps us deploy the application using the terminal with a simple series of steps.
+Don't worry about the length or complexity of the files.
 
 ### Install Vercel as a global dependency
 
 Use the following command to install Vercel globally using npm or pnpm package managers:
 
-<Code lang="bash" code={deploy.installation} />
+{/* prettier-ignore */}
+<Code lang="bash">
+\# npm
+npm install -g vercel@latest
+\# pnpm
+pnpm install -g vercel@latest
+</Code>
+
+### Login
+
+Log in to your Vercel account using either Google, GitHub, or Email.
+
+<Code lang="bash">vercel login</Code>
 
 ### Link Your Project
 
-Link your local project with your remote projects on Vercel that exist in your account. Follow these steps to link the project:
+Link your local project with your remote projects on Vercel that exist in your account. Follow these steps
+to link the project:
 
-<Code lang="bash" code={deploy.link} />
+{/* prettier-ignore */}
+<Code lang="bash">
+vercel link
+ ? Set up "~\path" ?
+ ? Which scope should contain your project ?
+ ? Link to existing project ?
+ ? What's your project's name ?
+</Code>
+
+### Pull Configuration From Vercel Online
+
+It is recommended to run the <Mark>vercel pull</Mark> command before the <Mark>vercel build</Mark> command
+to retrieve the environment variables from the remote project.
 
 ### Build Your Project
 
 Build your local project. Follow the next step:
 
-<Code lang="bash" code={deploy.build} />
+<Code lang="bash">vercel build --target=production</Code>
+
+This command builds your project locally or in your CI environment. The build artifacts are placed by default
+into the <Mark>./vercel/output</Mark> directory. You can see the files generated in the build process
+and check if they were created correctly. If there are any errors or issues, you can fix them and re-run the command.
+
+You can also specify different environments using the <Mark>--target</Mark> flag, such as:
+
+{/* prettier-ignore */}
+<Code lang="bash">
+vercel build --target=production 
+\# or 
+vercel build --target=staging
+</Code>
+
+### Unstable
+
+Although the Vercel CLI is powerful and simple, it is not yet fully stable. In multiple operations and processes,
+it may not work as expected or return unexpected values. However, it is a great tool that can enhance productivity
+over time.
+
+## GitHub Actions
+
+Using Vercel with GitHub Actions is a powerful and advanced use case for automating processes like
+
+<Mark>Preview Deployments</Mark>, <Mark>Development Deployments</Mark>, and <Mark>Production Deployments</Mark>. These actions are
+triggered by events in your repository, such as push, pull_request, or release.
+
+This approach allows you to customize and have better control over the CI/CD pipeline of your project. If you want
+a basic and controlled access to the resources to be deployed, use <Mark>vercel build</Mark>.
+
+### Preview Deployment
+
+A <Mark>Preview Deployment</Mark> is created every time users push a commit to a remote branch. This deployment is
+useful for checking the state of the changes made in the commit, such as the latest UI changes or verifying if the
+build process was successful.
+
+<Code lang="bash" children={deploy.preview} />
+
+### Production Deployment
+
+A <Mark>Production Deployment</Mark> is created when a commit is made to the main branch (by default, master or main).
+This environment is frequently used after merging a pull request.
+
+<Code lang="bash" children={deploy.production} />
+
+### Setup Workflows
+
+To deploy the application to any environment you have set up for the project using the CLI or the online project
+configuration, you need to configure the <Mark>VERCEL_ORG_ID</Mark> and <Mark>VERCEL_PROJECT_ID</Mark> variables.
+Follow these steps to obtain and use them:
+
+1. Generate the [Access Token](https://vercel.com/guides/how-do-i-use-a-vercel-api-access-token).
+2. Install the [Vercel CLI](https://vercel.com/docs/cli).
+3. Log in to your Vercel account by running <Mark>vercel login</Mark>.
+4. Link your project by running <Mark>vercel link</Mark>.
+5. Pull environment variables from the remote project by running <Mark>vercel pull</Mark>.
+6. Inside the generated <Mark>.vercel</Mark> folder, locate the <Mark>project.json</Mark> file, which contains the
+   <Mark>projectId</Mark> and <Mark>orgId</Mark> fields.
+7. Go to your GitHub repository and open the <Mark>Settings</Mark>.
+8. Navigate to <Mark>Secrets and variables</Mark> and click on <Mark>Actions</Mark>.
+9. Create three <Mark>Repository secrets</Mark> named:
+   - <Mark>VERCEL_TOKEN</Mark>
+   - <Mark>VERCEL_ORG_ID</Mark>
+   - <Mark>VERCEL_PROJECT_ID</Mark>

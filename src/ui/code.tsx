@@ -1,3 +1,4 @@
+import { Children } from "react"
 import { createCssVariablesTheme, createHighlighter } from "shiki"
 import { CodeProps } from "@/lib/@types/props"
 
@@ -12,14 +13,18 @@ const createTheme = await createHighlighter({
     themes: [cssVariables],
 })
 
-export const Code = async ({ code, lang = "ts" }: CodeProps) => {
-    const html = createTheme.codeToHtml(code.trim(), {
-        lang,
-        theme: "css-variables",
+export const Code = async ({ children = "", lang = "ts" }: CodeProps) => {
+    return Children.map(children, async (child) => {
+        // @ts-ignore
+        const convertToString = typeof child === "string" ? child.trim() : child?.props?.children?.trim()
+        const html = createTheme.codeToHtml(convertToString, {
+            lang,
+            theme: "css-variables",
+        })
+        return (
+            <div className="my-4 overflow-x-hidden">
+                <div dangerouslySetInnerHTML={{ __html: html }} />
+            </div>
+        )
     })
-    return (
-        <div className="overflow-x-hidden">
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
-    )
 }

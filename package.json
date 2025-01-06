@@ -47,7 +47,8 @@
           "*.json",
           "*.yml",
           "*.yaml",
-          "*.md"
+          "*.md",
+          "*.mdx"
         ],
         "options": {
           "tabWidth": 2

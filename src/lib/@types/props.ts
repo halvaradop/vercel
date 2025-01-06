@@ -5,7 +5,7 @@ export interface LayoutProps {
 }
 
 export interface CodeProps {
-    code: string
+    children?: string
     lang?: BundledLanguage
     fileName?: string
 }
